@@ -145,14 +145,14 @@ body{
 }
 
 #content {
-	float: left;
+	float: right;
 	width: 610px;
 }
 
 #sidebar{
-	float: right;
+	float: left;
 	width: 270px;
-	padding: 4px;
+	padding: 5px;
 }
 
 #info{

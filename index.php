@@ -7,7 +7,6 @@ require_once('lib/class.category.php'); $obj_category = new Category();
 require_once('lib/class.page.php'); $obj_page = new Page();
 require_once('lib/class.advertise.php'); $obj_adv = new Advertise();
 require_once('lib/class.user.php'); $obj_user = new User();
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,10 +29,6 @@ require_once('lib/class.user.php'); $obj_user = new User();
 <link href="<?php echo $obj_post->site_path(); ?>css/skins/graphite.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo $obj_post->site_path(); ?>css/skins/grey.css" rel="stylesheet" type="text/css" />
 
-
-
-
-
 <script type="text/javascript">
 $(document).ready(function($){
 
@@ -49,7 +44,6 @@ $(document).ready(function($){
 });
 </script>
 
-
 <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300' rel='stylesheet' type='text/css'> 
 <link rel="stylesheet" href="<?php echo $obj_post->site_path(); ?>css/bjqs.css">
 <link rel="stylesheet" href="<?php echo $obj_post->site_path(); ?>css/slider.css">
@@ -64,11 +58,9 @@ $(document).ready(function($){
 
 <script src="<?php echo $obj_post->site_path();?>js/jquery-1.6.1.min.js"></script>
 
-
 <title>
 	ITOne Computer
 </title>
-
 
 </head>
 <!-- Facebook -->
@@ -111,29 +103,46 @@ $(document).ready(function($){
 	</div> <!--#header-->
 	<div id="banner-slider">
 		<?php           
-                echo "<div class=\"slider-wrapper theme-default\">";
-                    echo "<div class=\"ribbon\"></div>";
-                    echo "<div id=\"slider\" class=\"nivoSlider\">";
-                    echo "<img src='".$obj_post->site_path()."img/banner01.jpg' style='width:900px !important; height:220px !important;' />";
-                    echo "<img src='".$obj_post->site_path()."img/banner02.jpg' style='width:900px !important; height:220px !important;' />";
-                    echo "<img src='".$obj_post->site_path()."img/banner03.jpg' style='width:900px !important; height:220px !important;' />";
-                    echo "<img src='".$obj_post->site_path()."img/banner04.jpg' style='width:900px !important; height:220px !important;' />";
-                    echo "<img src='".$obj_post->site_path()."img/banner05.jpg' style='width:900px !important; height:220px !important;' />";
-                    echo "</div>";          
-                echo "</div>";  
-                ?>
-                                
-                <script type="text/javascript" src="<?php echo $obj_post->site_path();?>js/jquery.nivo.slider.pack.js"></script>
-                <script type="text/javascript">
-                    $(window).load(function() {
-                    $('#slider').nivoSlider();
-                    });
-                </script>
-
-   
+	     echo "<div class=\"slider-wrapper theme-default\">";
+	      echo "<div class=\"ribbon\"></div>";
+	      echo "<div id=\"slider\" class=\"nivoSlider\">";
+	      echo "<img src='".$obj_post->site_path()."img/banner01.jpg' style='width:900px !important; height:220px !important;' />";
+	      echo "<img src='".$obj_post->site_path()."img/banner02.jpg' style='width:900px !important; height:220px !important;' />";
+	      echo "<img src='".$obj_post->site_path()."img/banner03.jpg' style='width:900px !important; height:220px !important;' />";
+	      echo "<img src='".$obj_post->site_path()."img/banner04.jpg' style='width:900px !important; height:220px !important;' />";
+	      echo "<img src='".$obj_post->site_path()."img/banner05.jpg' style='width:900px !important; height:220px !important;' />";
+	      echo "</div>";          
+	    echo "</div>";  
+	  ?>
+                              
+    <script type="text/javascript" src="<?php echo $obj_post->site_path();?>js/jquery.nivo.slider.pack.js"></script>
+    <script type="text/javascript">
+        $(window).load(function() {
+        $('#slider').nivoSlider();
+        });
+    </script>
 	</div>
 
 	<div id="containter">
+		<div id="sidebar">
+			<?php echo $obj_category->display(); ?>
+
+			<?php $obj_adv->display(); ?>
+
+			<div style='margin-top:5px;'>
+				<div class="fb-like-box" data-href="https://www.facebook.com/itonecomputer" data-width="270" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+			</div>
+
+			<!-- <div style='margin-top:5px;'>
+			<a href="http://info.flagcounter.com/ng9c"><img src="http://s11.flagcounter.com/mini/ng9c/bg_FFFFFF/txt_000000/border_CCCCCC/flags_0/" alt="Flag Counter" border="0"></a>
+			</div> -->
+
+			<div style='margin-top:5px;'>
+				<?php $obj_counter->calulate(); ?>
+				<?php $obj_counter->display(); ?>
+			</div>
+		</div><!--#sidebar-->
+
 		<div id="content">
 			<?php
 				if(isset($_GET['category'])):
@@ -158,31 +167,10 @@ $(document).ready(function($){
 					echo $obj_post->latest(22,"Accessies");
 					echo $obj_post->latest(19,"Printers");
 				endif;
-
-				
 			?>
 
 		</div><!--#content-->
-		<div id="sidebar">
-			<?php echo $obj_category->display(); ?>
-
-			<?php $obj_adv->display(); ?>
-
-			<div style='margin-top:5px;'>
-				<div class="fb-like-box" data-href="https://www.facebook.com/itonecomputer" data-width="270" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
-			</div>
-
-			<!-- <div style='margin-top:5px;'>
-			<a href="http://info.flagcounter.com/ng9c"><img src="http://s11.flagcounter.com/mini/ng9c/bg_FFFFFF/txt_000000/border_CCCCCC/flags_0/" alt="Flag Counter" border="0"></a>
-			</div> -->
-
-			<div style='margin-top:5px;'>
-				<?php $obj_counter->calulate(); ?>
-				<?php $obj_counter->display(); ?>
-			</div>
-		</div><!--#sidebar-->
 		<div class="clear"></div>
-
 
 	</div> <!--#container-->
 	<div class="clear"></div>

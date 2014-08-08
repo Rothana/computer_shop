@@ -25,10 +25,7 @@ class Counter
 		$pr = "<div class='counter'>";
 		$pr .= "<h4>Visitor Counter</h4>";
 		$pr .= "<table>";
-		$pr .= "<tr><td>Day</td><td>:</td><td>" .$row["counter_day"] . "</td></tr>";
-		$pr .= "<tr><td>Yesterday</td><td>:</td><td>" .$row["counter_yesterday"] . "</td></tr>";
-		$pr .= "<tr><td>Week</td><td>:</td><td>" . $row["counter_week"] . "</td></tr>";
-		$pr .= "<tr><td>Month</td><td>:</td><td>" . $row["counter_month"] . "</td></tr>";
+		$pr .= "<tr><td>Today</td><td>:</td><td>" .$row["counter_day"] . "</td></tr>";
 		$pr .= "<tr><td>Total</td><td>:</td><td>" . $row["counter_total"] . "</td></tr>";
 		$pr .= "</table>";
 		$pr .= "</div>";
