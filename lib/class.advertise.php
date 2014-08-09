@@ -7,13 +7,14 @@ class Advertise
 	private $status;
 	private $image;
 	private $order;
+	private $position;
 	
 	public function __construct()
 	{
 
 	}
 	
-	public function set($id,$title,$link,$status,$order,$image)
+	public function set($id,$title,$link,$status,$position,$order,$image)
 	{
 		$this->id = $id;
 		$this->title = $title;
@@ -21,22 +22,19 @@ class Advertise
 		$this->order = $order;	
 		$this->image = $image;
 		$this->status = $status;
+		$this->position = $position;
 
 	}
 	public function create()
 	{
 		$db = new Database();
 		$db->connect();
-		if($db -> insert('rln_advertise',array($this->title,$this->link,$this->status,$this->order,$this->image),'adv_title,adv_link,adv_status,adv_order,adv_img'))
-		{
+		if($db -> insert('rln_advertise',array($this->title,$this->link,$this->status,$this->position,$this->order,$this->image),'adv_title,adv_link,adv_status,adv_position,adv_order,adv_img')):
 			$db->disconnect();
 			return "<div class='message'>Your record is inserted !</div>";	
-		}
-		else
-		{
+		else:
 			return "Can't insert new record." .mysql_error();	
-		}
-		
+		endif;		
 	}
 	
 	public function display()
@@ -69,16 +67,13 @@ class Advertise
 	{
 		$db = new Database();	
 		$db->connect();
-		$rs = $db->update('rln_advertise',array('adv_title'=>$this->title,'adv_link'=>$this->link,'adv_status'=>$this->status,'adv_order'=>$this->order),array('adv_id',$this->id));
-		if($rs)
-		{
+		$rs = $db->update('rln_advertise',array('adv_title'=>$this->title,'adv_link'=>$this->link,'adv_status'=>$this->status,'adv_position'=>$this->position,'adv_order'=>$this->order),array('adv_id',$this->id));
+		if($rs):
 			$db->disconnect();
 			return "<div class='message'>Update successful !</div>";	
-		}
-		else
-		{
+		else:
 			return "Can't upldate, Please try again." .mysql_error();	
-		}
+		endif;
 	}
 	
 	public function record()
@@ -189,7 +184,6 @@ class Advertise
 						}
 						else
 							die ("Failed, while uploading file<br />");
-					
 					}
 					
 				}
