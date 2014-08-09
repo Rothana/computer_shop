@@ -75,7 +75,10 @@ $(document).ready(function($){
 
 <body>
 	<div id="outer-wrapper">
-		<div id="outer-left"> </div>
+		<div id="outer-left">
+			<?php $obj_adv->display("outer_left"); ?>
+		</div>
+		
 		<div id="wrapper">
 			<div id="nav">
 				<div class="left">
@@ -130,7 +133,7 @@ $(document).ready(function($){
 					<div id="sidebar">
 						<?php echo $obj_category->display(); ?>
 
-						<?php $obj_adv->display(); ?>
+						<?php $obj_adv->display("sidebar"); ?>
 
 						<div style='margin-top:5px;'>
 							<div class="fb-like-box" data-href="https://www.facebook.com/itonecomputer" data-width="270" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
@@ -204,7 +207,9 @@ $(document).ready(function($){
 				</div><!--#copyright-->
 			</div> <!--#footer-->
 		</div> <!--#wrapper-->
-		<div id="outer-right"> </div>
+		<div id="outer-right">
+			<?php $obj_adv->display("outer_right"); ?>
+		</div>
 	</div>
 </body>
 </html>

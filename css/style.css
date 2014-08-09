@@ -71,8 +71,6 @@ body{
 	margin-left: 10px;
 }
 
-
-
 #wrapper {
 	width: 900px;
 	background: #fff;
@@ -440,12 +438,8 @@ body{
 	padding: 10px;
 }
 
-
 .ads{
-	margin: 5px 0px;
-}
-.ads img{
-	width: 270px;
+	margin-bottom: 5px;
 }
 
 .counter {

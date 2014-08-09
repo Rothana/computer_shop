@@ -37,15 +37,17 @@ class Advertise
 		endif;		
 	}
 	
-	public function display()
+	public function display($position)
 	{
 		$db = new Database();	
 		$db->connect();
 
 		$obj_post = new Post();
 		
-		$where = "adv_status=1";
+		$where = "adv_status=1 and adv_position='".$position."'";
 		$rs = $db -> select('rln_advertise','*',$where,"adv_order ASC");
+
+		if(!$rs) return;
 		
 		while ($row = mysql_fetch_array($rs)):
 			echo "<div class='ads'>";

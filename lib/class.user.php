@@ -70,16 +70,12 @@ class User
 	{
 		$db = new Database();
 		$db->connect();
-		if($db -> insert('rln_user',array($this->name,$this->username,$this->password,$this->type),'user_name,user_username,user_password,user_type'))
-		{
+		if($db -> insert('rln_user',array($this->name,$this->username,$this->password,$this->type),'user_name,user_username,user_password,user_type')):
 			$db->disconnect();
 			return "<div class='message'>Your record is inserted !</div>";	
-		}
-		else
-		{
+		else:
 			return "Can't insert new record." .mysql_error();	
-		}
-		
+		endif;		
 	}
 
 	public function _current($id)
@@ -95,15 +91,12 @@ class User
 		$db = new Database();	
 		$db->connect();
 		$rs = $db->update('rln_user',array('user_name'=>$this->name,'user_username'=>$this->username,'user_password'=>$this->password,'user_type'=>$this->type),array('user_id',$this->id));
-		if($rs)
-		{
+		if($rs):
 			$db->disconnect();
 			return "<div class='message'>Update successful !</div>";	
-		}
-		else
-		{
+		else:
 			return "Can't upldate, Please try again." .mysql_error();	
-		}
+		endif;
 	}
 	
 	public function record()
