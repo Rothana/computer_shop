@@ -24,6 +24,12 @@
         <li><a href='advertise.php?p=new'>New Advertise</a></li>
         <li><a href='advertise.php?p=show'>All Advertise</a></li>
     </ul>
+
+    <ul>
+        <li class="main-menu">Brands</li>
+        <li><a href='brands.php?p=new'>New Brand</a></li>
+        <li><a href='brands.php?p=show'>All Brands</a></li>
+    </ul>
     
     <ul>
         <li class="main-menu">Category</li>
