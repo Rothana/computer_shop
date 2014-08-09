@@ -74,133 +74,137 @@ $(document).ready(function($){
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <body>
-<div id="wrapper">
-	<div id="nav">
-		<div class="left">
-			<ul>
-				<li><a href="">Home</a></li>
-				<li><a href="">Service</a></li>
-				<li><a href="">Contact</a></li>
-				<li><a href="">About</a></li>
-			</ul>
-		</div> <!--.right-->
-		<div class="right">
-			<ul>
-				<li><a href="https://www.facebook.com/itonecomputer">Facebook</a></li>
-				<li><a href="">Twitter</a></li>
-			</ul>
-		</div> <!--.left-->
+	<div id="outer-wrapper">
+		<div id="outer-left"> </div>
+		<div id="wrapper">
+			<div id="nav">
+				<div class="left">
+					<ul>
+						<li><a href="">Home</a></li>
+						<li><a href="">Service</a></li>
+						<li><a href="">Contact</a></li>
+						<li><a href="">About</a></li>
+					</ul>
+				</div> <!--.right-->
+				<div class="right">
+					<ul>
+						<li><a href="https://www.facebook.com/itonecomputer">Facebook</a></li>
+						<li><a href="">Twitter</a></li>
+					</ul>
+				</div> <!--.left-->
 
-	</div> <!--#nav-->
-	<div id="header">
-		<div class="logo">
-			<a href="<?php echo $obj_post->site_path(); ?>"><img src="<?php echo $obj_post->site_path(); ?>img/logo.png" /></a>
-		</div><!--.logo-->
-		<div class="menu">
-			<?php echo $obj_page->display(); ?>
+			</div> <!--#nav-->
+			<div id="header">
+				<div class="logo">
+					<a href="<?php echo $obj_post->site_path(); ?>"><img src="<?php echo $obj_post->site_path(); ?>img/logo.png" /></a>
+				</div><!--.logo-->
+				<div class="menu">
+					<?php echo $obj_page->display(); ?>
 
-		</div> <!--.menu-->
-	</div> <!--#header-->
-	<div id="banner-slider">
-		<?php           
-	     echo "<div class=\"slider-wrapper theme-default\">";
-	      echo "<div class=\"ribbon\"></div>";
-	      echo "<div id=\"slider\" class=\"nivoSlider\">";
-	      echo "<img src='".$obj_post->site_path()."img/banner01.jpg' style='width:900px !important; height:220px !important;' />";
-	      echo "<img src='".$obj_post->site_path()."img/banner02.jpg' style='width:900px !important; height:220px !important;' />";
-	      echo "<img src='".$obj_post->site_path()."img/banner03.jpg' style='width:900px !important; height:220px !important;' />";
-	      echo "<img src='".$obj_post->site_path()."img/banner04.jpg' style='width:900px !important; height:220px !important;' />";
-	      echo "<img src='".$obj_post->site_path()."img/banner05.jpg' style='width:900px !important; height:220px !important;' />";
-	      echo "</div>";          
-	    echo "</div>";  
-	  ?>
-                              
-    <script type="text/javascript" src="<?php echo $obj_post->site_path();?>js/jquery.nivo.slider.pack.js"></script>
-    <script type="text/javascript">
-        $(window).load(function() {
-        $('#slider').nivoSlider();
-        });
-    </script>
+				</div> <!--.menu-->
+			</div> <!--#header-->
+			<div id="banner-slider">
+				<?php           
+			     echo "<div class=\"slider-wrapper theme-default\">";
+			      echo "<div class=\"ribbon\"></div>";
+			      echo "<div id=\"slider\" class=\"nivoSlider\">";
+			      echo "<img src='".$obj_post->site_path()."img/banner01.jpg' style='width:900px !important; height:220px !important;' />";
+			      echo "<img src='".$obj_post->site_path()."img/banner02.jpg' style='width:900px !important; height:220px !important;' />";
+			      echo "<img src='".$obj_post->site_path()."img/banner03.jpg' style='width:900px !important; height:220px !important;' />";
+			      echo "<img src='".$obj_post->site_path()."img/banner04.jpg' style='width:900px !important; height:220px !important;' />";
+			      echo "<img src='".$obj_post->site_path()."img/banner05.jpg' style='width:900px !important; height:220px !important;' />";
+			      echo "</div>";          
+			    echo "</div>";  
+			  ?>
+		                              
+		    <script type="text/javascript" src="<?php echo $obj_post->site_path();?>js/jquery.nivo.slider.pack.js"></script>
+		    <script type="text/javascript">
+		        $(window).load(function() {
+		        $('#slider').nivoSlider();
+		        });
+		    </script>
+			</div>
+
+			<div id="containter">
+				<?php if(isset($_GET['category']) or isset($_GET['page'])): ?>
+					<div id="sidebar">
+						<?php echo $obj_category->display(); ?>
+
+						<?php $obj_adv->display(); ?>
+
+						<div style='margin-top:5px;'>
+							<div class="fb-like-box" data-href="https://www.facebook.com/itonecomputer" data-width="270" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+						</div>
+
+						<!-- <div style='margin-top:5px;'>
+						<a href="http://info.flagcounter.com/ng9c"><img src="http://s11.flagcounter.com/mini/ng9c/bg_FFFFFF/txt_000000/border_CCCCCC/flags_0/" alt="Flag Counter" border="0"></a>
+						</div> -->
+
+						<div style='margin-top:5px;'>
+							<?php $obj_counter->calulate(); ?>
+							<?php $obj_counter->display(); ?>
+						</div>
+					</div><!--#sidebar-->
+				<?php endif; ?>
+
+				<?php
+					if(isset($_GET['category'])):
+						echo '<div id="content">';
+						if(isset($_GET['post'])){
+							$post = $_GET['post'];
+							echo $obj_post->single($post);
+
+							$category = $_GET['category'];
+							echo $obj_post->related($category,$post);
+						}
+						else{
+						$category = $_GET['category'];
+						echo $obj_post->display($category);
+						}
+						echo '</div>';
+						echo '<div class="clear"></div>';
+
+					elseif(isset($_GET['page'])):
+						echo '<div id="content">';
+						$page = $_GET['page'];
+						echo $obj_page->single($page);
+						echo '</div>';
+						echo '<div class="clear"></div>';
+					else:
+						echo '<div id="feature">';
+							echo "<div class='list' style='margin-bottom:15px;'>";
+								echo $obj_post->latest(9,"New Laptops");
+								echo $obj_post->latest(10,"Desktop Computers");
+								echo $obj_post->latest(22,"Accessies");
+								echo $obj_post->latest(19,"Printers");
+
+							  echo '<div class="clear"></div>';
+							echo "</div>";
+						echo '</div>';
+					endif;
+				?>
+
+			</div> <!--#container-->
+			<div class="clear"></div>
+
+			<div id="info">
+				<ul>
+					<li><img src="<?php echo $obj_post->site_path(); ?>img/mail.png" /> info@itonecomputer.com</li>
+					<li><a href=""><img src="img/twitter.png" /> @itonecomputer</a></li>
+					<li style="float:right;"><img src="<?php echo $obj_post->site_path() ?>img/phone.png" /> 089 90 90 77</li>
+				</ul>
+			</div> <!--#info-->
+
+			<div id="footer">
+				<div class="line"></div>
+				<div class="shadow"></div>
+
+				<div class="copyright">
+					ITOne Computer ©2013. All Right Reserved.
+				</div><!--#copyright-->
+			</div> <!--#footer-->
+		</div> <!--#wrapper-->
+		<div id="outer-right"> </div>
 	</div>
-
-	<div id="containter">
-		<?php if(isset($_GET['category']) or isset($_GET['page'])): ?>
-			<div id="sidebar">
-				<?php echo $obj_category->display(); ?>
-
-				<?php $obj_adv->display(); ?>
-
-				<div style='margin-top:5px;'>
-					<div class="fb-like-box" data-href="https://www.facebook.com/itonecomputer" data-width="270" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
-				</div>
-
-				<!-- <div style='margin-top:5px;'>
-				<a href="http://info.flagcounter.com/ng9c"><img src="http://s11.flagcounter.com/mini/ng9c/bg_FFFFFF/txt_000000/border_CCCCCC/flags_0/" alt="Flag Counter" border="0"></a>
-				</div> -->
-
-				<div style='margin-top:5px;'>
-					<?php $obj_counter->calulate(); ?>
-					<?php $obj_counter->display(); ?>
-				</div>
-			</div><!--#sidebar-->
-		<?php endif; ?>
-
-		<?php
-			if(isset($_GET['category'])):
-				echo '<div id="content">';
-				if(isset($_GET['post'])){
-					$post = $_GET['post'];
-					echo $obj_post->single($post);
-
-					$category = $_GET['category'];
-					echo $obj_post->related($category,$post);
-				}
-				else{
-				$category = $_GET['category'];
-				echo $obj_post->display($category);
-				}
-				echo '</div>';
-				echo '<div class="clear"></div>';
-
-			elseif(isset($_GET['page'])):
-				echo '<div id="content">';
-				$page = $_GET['page'];
-				echo $obj_page->single($page);
-				echo '</div>';
-				echo '<div class="clear"></div>';
-			else:
-				echo '<div id="feature">';
-					echo "<div class='list' style='margin-bottom:15px;'>";
-						echo $obj_post->latest(9,"New Laptops");
-						echo $obj_post->latest(10,"Desktop Computers");
-						echo $obj_post->latest(22,"Accessies");
-						echo $obj_post->latest(19,"Printers");
-
-					  echo '<div class="clear"></div>';
-					echo "</div>";
-				echo '</div>';
-			endif;
-		?>
-
-	</div> <!--#container-->
-	<div class="clear"></div>
-
-	<div id="info">
-		<ul>
-			<li><img src="<?php echo $obj_post->site_path(); ?>img/mail.png" /> info@itonecomputer.com</li>
-			<li><a href=""><img src="img/twitter.png" /> @itonecomputer</a></li>
-			<li style="float:right;"><img src="<?php echo $obj_post->site_path() ?>img/phone.png" /> 089 90 90 77</li>
-		</ul>
-	</div> <!--#info-->
-
-	<div id="footer">
-		<div class="line"></div>
-		<div class="shadow"></div>
-
-		<div class="copyright">
-			ITOne Computer ©2013. All Right Reserved.
-		</div><!--#copyright-->
-	</div> <!--#footer-->
-</div> <!--#wrapper-->
 </body>
 </html>

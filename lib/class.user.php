@@ -30,6 +30,7 @@ class User
 		$db->connect();
 		$where = "user_username='".$us."' and user_password='".$pwd."'";
 		$rs = $db -> select('rln_user','*',$where);
+		if(!$rs) return;
 		if(mysql_num_rows($rs)==1)
 			return $rs;
 		else
@@ -42,7 +43,10 @@ class User
 		$db->connect();
 		$where = "user_username='".$username."' and user_password='".$password."'";
 		$rs = $db -> select('rln_user','*',$where);
+		if(!$rs) return;
+		
 		$row = mysql_fetch_array($rs);
+
 
 		$_SESSION['rlnid']= $row['user_id'];
 		$_SESSION['rlntype']= $row['user_type'];

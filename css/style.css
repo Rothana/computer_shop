@@ -51,11 +51,33 @@ body{
 	font-family: arial;
 }
 
-#wrapper{
+#outer-wrapper {
+  width: 1220px;
+  margin: 0px auto;
+}
+
+#outer-left, #outer-right {
+	width: 150px;
+	min-height: 1px;
+}
+
+#outer-left {
+	float: left;
+	margin-right: 10px;
+}
+
+#outer-right {
+	float: right;
+	margin-left: 10px;
+}
+
+
+
+#wrapper {
 	width: 900px;
-	margin: 0px auto;
 	background: #fff;
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+	float: left;
 }
 
 #nav{
