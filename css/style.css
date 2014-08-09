@@ -144,6 +144,16 @@ body{
 #content {
 	float: right;
 	width: 610px;
+	padding-top: 10px;
+}
+
+#feature {
+	padding: 10px;
+	background: #fff;
+}
+
+#feature .product {
+	margin-left: 20px;
 }
 
 #sidebar{
@@ -280,7 +290,7 @@ body{
 }
 #menu .accordion{}
 #menu .accordion, .blue .accordion li {margin: 0; padding: 0; border: none;}
-#menu .accordion a {padding: 5px 5px 5px 5px; text-decoration:none; display: block; color: #333; }
+#menu .accordion a {padding: 5px 5px 5px 5px; text-decoration:none; display: block; color: #333; cursor: pointer;}
 #menu .accordion ul a {padding: 5px 5px 5px 20px;}
 #menu .accordion a.dcjq-parent, .blue .accordion a.dcjq-parent:hover {padding: 5px 5px 5px 5px;}
 #menu .accordion a.dcjq-parent.active {}
@@ -353,7 +363,6 @@ body{
 .single{
 	padding-left: 5px;
 	padding-bottom: 20px;
-	padding-top: 10px;
 }
 .single h2{
 	font-size: 16px;

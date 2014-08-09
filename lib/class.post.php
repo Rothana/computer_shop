@@ -79,15 +79,18 @@ class Post
 		$conn = $db->connect();
 
 		$obj_category = new Category();
-		$id = $obj_category->get_id($category);
 
-		if($id):
+		if($category=='products')
+		  $where = "post_status=1";
+		else{
+			$id = $obj_category->get_id($category);
+			$where = "post_status=1 and post_category=".$id;
 
+			if(!$id) return;
+		}
 
-		$where = "post_status=1 and post_category=".$id;
-		$result = "SELECT * from rln_post WHERE ".$where. " ORDER BY post_id DESC";
+		$result = "SELECT * from rln_post WHERE ". $where. " ORDER BY post_id DESC";
 
-		
 		$url = $category;
 		$pager = new PS_Paginations($conn, $result, 9, 8,$url,$this->site_path());
 	
@@ -105,8 +108,12 @@ class Post
 		if(!$result) return "<div class='list'><h2>".$obj_category->get_name($id)."</h2><div class='message'>There is no content.</div></div>";
 
 		$pr ="<div class='list'>";
-
-		$pr .="<h2>".$obj_category->get_name($id)."</h2>";
+		if(isset($id)):
+			$pr .="<h2>".$obj_category->get_name($id)."</h2>";
+		else:
+			$pr .="<h2>All Products</h2>";
+		endif;
+		
 		while ($row = @mysql_fetch_array($result)):
 
 			$img_w = "img_id=" . $row['post_image'];
@@ -141,8 +148,6 @@ class Post
 		$db->disconnect();
 		return $pr;
 
-		endif;
-		
 	}
 
 
@@ -274,11 +279,11 @@ class Post
 		$obj_category = new Category();
 
 		$where = "post_feature=1 and post_status=1 and post_category=category_id and category_parent=".$category;
-		$result = "SELECT * from rln_post,rln_category WHERE ".$where. " ORDER BY post_date DESC";
+		$result = "SELECT * from rln_post,rln_category WHERE " .$where. " ORDER BY post_date DESC";
 
 		
 		$url = "";
-		$pager = new PS_Paginations($conn, $result, 6, 8,$url,$this->site_path());
+		$pager = new PS_Paginations($conn, $result, 5, 8,$url,$this->site_path());
 	
 		/*
 		 * Enable debugging if you want o view query errors
@@ -291,11 +296,8 @@ class Post
 		*/
 		$result = $pager->paginate();
 
-		//if(!$result) return "<div class='message'>There is no content.</div>";
+		$pr = "";
 
-		$pr ="<div class='list' style='margin-bottom:15px;'>";
-
-		$pr .="<h2 style='margin-top:5px;'>".$title."</h2>";
 		while ($row = @mysql_fetch_array($result)):
 
 			$img_w = "img_id=" . $row['post_image'];
@@ -312,21 +314,7 @@ class Post
 				$pr .='<a class="detail" href="'.$this->site_path().$obj_category->get_url($row['post_category']).'/'.$row['post_id'].'">Details >></a>';
 			$pr .='</div>';
 		endwhile;
-		$pr .='<div class="clear"></div>';
-		$pr .="</div>";
-		$pr .='<div class="clear"></div>';
 
-		/*
-		$pr .= "<div class='pagination'>";
-		  $pr .= "<div align='center'>";
-				$pr .= $pager->renderFirst();
-				$pr .= $pager->renderPrev();
-				$pr .= $pager->renderNav('<span>','</span>') ;
-				$pr .= $pager->renderNext();
-				$pr .= $pager->renderLast();
-		  $pr .= "</div>";
-		$pr .= "</div>";
-		*/
 		
 		$db->disconnect();
 		return $pr;

@@ -124,53 +124,63 @@ $(document).ready(function($){
 	</div>
 
 	<div id="containter">
-		<div id="sidebar">
-			<?php echo $obj_category->display(); ?>
+		<?php if(isset($_GET['category']) or isset($_GET['page'])): ?>
+			<div id="sidebar">
+				<?php echo $obj_category->display(); ?>
 
-			<?php $obj_adv->display(); ?>
+				<?php $obj_adv->display(); ?>
 
-			<div style='margin-top:5px;'>
-				<div class="fb-like-box" data-href="https://www.facebook.com/itonecomputer" data-width="270" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
-			</div>
+				<div style='margin-top:5px;'>
+					<div class="fb-like-box" data-href="https://www.facebook.com/itonecomputer" data-width="270" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+				</div>
 
-			<!-- <div style='margin-top:5px;'>
-			<a href="http://info.flagcounter.com/ng9c"><img src="http://s11.flagcounter.com/mini/ng9c/bg_FFFFFF/txt_000000/border_CCCCCC/flags_0/" alt="Flag Counter" border="0"></a>
-			</div> -->
+				<!-- <div style='margin-top:5px;'>
+				<a href="http://info.flagcounter.com/ng9c"><img src="http://s11.flagcounter.com/mini/ng9c/bg_FFFFFF/txt_000000/border_CCCCCC/flags_0/" alt="Flag Counter" border="0"></a>
+				</div> -->
 
-			<div style='margin-top:5px;'>
-				<?php $obj_counter->calulate(); ?>
-				<?php $obj_counter->display(); ?>
-			</div>
-		</div><!--#sidebar-->
+				<div style='margin-top:5px;'>
+					<?php $obj_counter->calulate(); ?>
+					<?php $obj_counter->display(); ?>
+				</div>
+			</div><!--#sidebar-->
+		<?php endif; ?>
 
-		<div id="content">
-			<?php
-				if(isset($_GET['category'])):
-					if(isset($_GET['post'])){
-						$post = $_GET['post'];
-						echo $obj_post->single($post);
+		<?php
+			if(isset($_GET['category'])):
+				echo '<div id="content">';
+				if(isset($_GET['post'])){
+					$post = $_GET['post'];
+					echo $obj_post->single($post);
 
-						$category = $_GET['category'];
-						echo $obj_post->related($category,$post);
-					}
-					else{
 					$category = $_GET['category'];
-					echo $obj_post->display($category);
-					}
+					echo $obj_post->related($category,$post);
+				}
+				else{
+				$category = $_GET['category'];
+				echo $obj_post->display($category);
+				}
+				echo '</div>';
+				echo '<div class="clear"></div>';
 
-				elseif(isset($_GET['page'])):
-					$page = $_GET['page'];
-					echo $obj_page->single($page);
-				else:
-					echo $obj_post->latest(9,"New Laptops");
-					echo $obj_post->latest(10,"Desktop Computers");
-					echo $obj_post->latest(22,"Accessies");
-					echo $obj_post->latest(19,"Printers");
-				endif;
-			?>
+			elseif(isset($_GET['page'])):
+				echo '<div id="content">';
+				$page = $_GET['page'];
+				echo $obj_page->single($page);
+				echo '</div>';
+				echo '<div class="clear"></div>';
+			else:
+				echo '<div id="feature">';
+					echo "<div class='list' style='margin-bottom:15px;'>";
+						echo $obj_post->latest(9,"New Laptops");
+						echo $obj_post->latest(10,"Desktop Computers");
+						echo $obj_post->latest(22,"Accessies");
+						echo $obj_post->latest(19,"Printers");
 
-		</div><!--#content-->
-		<div class="clear"></div>
+					  echo '<div class="clear"></div>';
+					echo "</div>";
+				echo '</div>';
+			endif;
+		?>
 
 	</div> <!--#container-->
 	<div class="clear"></div>

@@ -165,8 +165,9 @@ class Category
 		$pr ="<div id='menu'>";
 		$pr .="<h2>Categories</h2>";
 		$pr .='<ul class="accordion"  id="accordion-3">';
+		$pr .="<li><a href='".$obj_post->site_path()."products'><img src='".$obj_post->site_path()."img/arrow.png' /> All Products</a>";
 		while($row = @mysql_fetch_array($rs)):
-			$pr .='<li><a href="#"><img src="'.$obj_post->site_path().'img/arrow.png" /> '.$row['category_name'].'</a>';
+			$pr .='<li><a><img src="'.$obj_post->site_path().'img/arrow.png" /> '.$row['category_name'].'</a>';
 			$where = "category_parent=".$row['category_id'];
 			$sr = $db -> select('rln_category','*',$where);
 			$pr .="<ul>";
