@@ -7,6 +7,8 @@ require_once('lib/class.category.php'); $obj_category = new Category();
 require_once('lib/class.page.php'); $obj_page = new Page();
 require_once('lib/class.advertise.php'); $obj_adv = new Advertise();
 require_once('lib/class.user.php'); $obj_user = new User();
+require_once('lib/class.news.php'); $obj_news = new News();
+require_once('lib/class.brand.php'); $obj_brand = new Brand();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -25,9 +27,14 @@ require_once('lib/class.user.php'); $obj_user = new User();
 <script type='text/javascript' src='<?php echo $obj_post->site_path(); ?>js/jquery.cookie.js'></script>
 <script type='text/javascript' src='<?php echo $obj_post->site_path(); ?>js/jquery.hoverIntent.minified.js'></script>
 <script type='text/javascript' src='<?php echo $obj_post->site_path(); ?>js/jquery.dcjqaccordion.2.7.min.js'></script>
+<script type='text/javascript' src='<?php echo $obj_post->site_path(); ?>js/jquery.li-scroller.1.0.js'></script>
+<script type='text/javascript' src='<?php echo $obj_post->site_path(); ?>thumbsilder/thumbnail-slider.js'></script>
 <link href="<?php echo $obj_post->site_path(); ?>css/skins/blue.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo $obj_post->site_path(); ?>css/skins/graphite.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo $obj_post->site_path(); ?>css/skins/grey.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $obj_post->site_path(); ?>css/li-scroller.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $obj_post->site_path(); ?>thumbsilder/generic.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $obj_post->site_path(); ?>thumbsilder/slider.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
 $(document).ready(function($){
@@ -40,6 +47,8 @@ $(document).ready(function($){
 		showCount: false,
 		speed: 'slow'
 	});
+
+	$("ul#ticker01").liScroll();
 
 });
 </script>
@@ -106,6 +115,10 @@ $(document).ready(function($){
 
 				</div> <!--.menu-->
 			</div> <!--#header-->
+
+			<!-- ticker news -->
+			<?php echo $obj_news->display(); ?>
+			
 			<div id="banner-slider">
 				<?php           
 			     echo "<div class=\"slider-wrapper theme-default\">";
@@ -189,6 +202,8 @@ $(document).ready(function($){
 
 			</div> <!--#container-->
 			<div class="clear"></div>
+
+			<?php echo $obj_brand->display(); ?>
 
 			<div id="info">
 				<ul>

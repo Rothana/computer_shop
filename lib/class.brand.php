@@ -99,6 +99,27 @@ class Brand
 		
 		echo $pr;
 	}
+
+	public function display(){
+		$db = new Database();	
+		$db->connect();
+		$rs = $db -> select('rln_brand','*');
+
+		if(!$rs) return;
+
+		$obj_post = new Post();
+		
+		$pr = "<div id='brand'>";
+		$pr .= "<div id='mcts1'>";
+		while($row = @mysql_fetch_array($rs)):
+			$pr .= "<img src='".$obj_post->site_path()."media/brands/".$row["br_logo"]."' />";
+		endwhile;
+		$pr .="</div>";
+		$pr .="</div>";
+
+		return $pr;
+	}
+	
 	
 	public function delete($del)
 	{

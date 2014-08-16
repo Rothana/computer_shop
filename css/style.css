@@ -51,6 +51,45 @@ body{
 	font-family: arial;
 }
 
+.tickercontainer {
+	width: 100% !important;
+	border-top: 1px solid #ebebec !important;
+	border-bottom: 1px solid #ebebec !important;
+	border-left: none !important;
+	border-right: none !important;
+	padding: 2px 0 !important;
+}
+.tickercontainer .mask {
+	width: 98% !important;
+	padding-right: 2px;
+	padding-left: 2px;
+	top: 6px !important;
+}
+ul.newsticker {
+	font: 12px arial !important;
+}
+
+
+#brand {
+  width: 100%;
+}
+#mcts1 {
+  width: 780px !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: none !important;
+  padding: 36px 0 !important;
+}
+#mcts1 .navPrev {
+  top: 70px !important; 
+}
+#mcts1 .navNext {
+  top: 70px !important; 
+}
+#mcts1 .navPause {
+  display: none !important;
+}
+
 #outer-wrapper {
   width: 1220px;
   margin: 0px auto;
@@ -124,7 +163,7 @@ body{
 #header .menu{
 	display: block;
 	position: absolute;
-	bottom: 11px;
+	bottom: 8px;
 }
 #header .menu ul{
 	margin: 0px;
@@ -159,6 +198,7 @@ body{
 
 #containter{
 	background: url(../img/bg.png) repeat-y;
+	padding-bottom: 40px;
 }
 
 #content {
@@ -307,6 +347,7 @@ body{
     padding: 8px 6px;
     border-bottom: 2px solid #FFD34D;
     margin-bottom: 5px;
+    display: block;
 }
 #menu .accordion{}
 #menu .accordion, .blue .accordion li {margin: 0; padding: 0; border: none;}
