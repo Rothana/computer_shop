@@ -30,6 +30,18 @@
         <li><a href='brands.php?p=new'>New Brand</a></li>
         <li><a href='brands.php?p=show'>All Brands</a></li>
     </ul>
+
+    <ul>
+        <li class="main-menu">Hot News</li>
+        <li><a href='news.php?p=new'>New News</a></li>
+        <li><a href='news.php?p=show'>All News</a></li>
+    </ul>
+
+    <ul>
+        <li class="main-menu">Files</li>
+        <li><a href='files.php?p=new'>New File</a></li>
+        <li><a href='files.php?p=show'>All Files</a></li>
+    </ul>
     
     <ul>
         <li class="main-menu">Category</li>

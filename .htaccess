@@ -5,6 +5,7 @@ RewriteBase /itonecomputer/
 
 RewriteRule ^pg_([a-zA-Z0-9_-]+)$ index.php?page=$1
 RewriteRule ^p_([a-zA-Z0-9_-]+)$ index.php?p=$1
+RewriteRule ^dr_([a-zA-Z0-9_-]+)$ index.php?dr=$1
 
 RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?category=$1
 

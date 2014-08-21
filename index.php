@@ -9,6 +9,7 @@ require_once('lib/class.advertise.php'); $obj_adv = new Advertise();
 require_once('lib/class.user.php'); $obj_user = new User();
 require_once('lib/class.news.php'); $obj_news = new News();
 require_once('lib/class.brand.php'); $obj_brand = new Brand();
+require_once('lib/class.file.php'); $obj_file = new File();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -142,7 +143,7 @@ $(document).ready(function($){
 			</div>
 
 			<div id="containter">
-				<?php if(isset($_GET['category']) or isset($_GET['page'])): ?>
+				<?php if(isset($_GET['category']) or isset($_GET['page']) or isset($_GET['dr']) ): ?>
 					<div id="sidebar">
 						<?php echo $obj_category->display(); ?>
 
@@ -174,8 +175,12 @@ $(document).ready(function($){
 							echo $obj_post->related($category,$post);
 						}
 						else{
-						$category = $_GET['category'];
-						echo $obj_post->display($category);
+							if($_GET['category']=='driver'):
+								echo $obj_file->display();
+							else:
+								$category = $_GET['category'];
+								echo $obj_post->display($category);
+							endif;
 						}
 						echo '</div>';
 						echo '<div class="clear"></div>';
@@ -184,6 +189,11 @@ $(document).ready(function($){
 						echo '<div id="content">';
 						$page = $_GET['page'];
 						echo $obj_page->single($page);
+						echo '</div>';
+						echo '<div class="clear"></div>';
+					elseif (isset($_GET['dr'])):
+						echo '<div id="content">';
+						echo $obj_file->single($_GET['dr']);
 						echo '</div>';
 						echo '<div class="clear"></div>';
 					else:

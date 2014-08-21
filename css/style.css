@@ -197,7 +197,6 @@ ul.newsticker {
 }
 
 #containter{
-	background: url(../img/bg.png) repeat-y;
 	padding-bottom: 40px;
 }
 
@@ -431,6 +430,7 @@ ul.newsticker {
     border-top: 1px solid #FFFFFF;
     padding: 6px 5px;
     background:none repeat scroll 0 0 #F7F7F7;
+    display: block;
 }
 .single .info{
 	color: #808080;
