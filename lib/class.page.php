@@ -198,13 +198,23 @@ class Page
 		if(isset($_GET['category'])=='products'):
 			$product_class="class='selected'";
 			$home = "";
+			$driver_class = "";
 		else: 
 			$product_class ="";
+		endif;
+
+		if(isset($_GET['category'])=='driver'):
+			$driver_class="class='selected'";
+			$home = "";
+			$product_class = "";
+		else: 
+			$driver_class ="";
 		endif;
 
 		$pr ="<ul>";
 		$pr .="<li><a ".$home." href='".$obj_post->site_path()."'>Home</a></li>";
 		$pr .="<li><a ".$product_class."href='".$obj_post->site_path()."products'>Products</a></li>";
+		$pr .="<li><a ".$driver_class."href='".$obj_post->site_path()."driver'>Drivers</a></li>";
 		while($row = @mysql_fetch_array($rs)):
 			if(@$url==$row['page_url'])
 			$pr .="<li><a  class='selected' href='".$obj_post->site_path()."pg_".$row['page_url']."'>".$row['page_title']."</a>";

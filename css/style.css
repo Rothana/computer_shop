@@ -275,6 +275,7 @@ ul.newsticker {
     font-size: 13px;
     font-weight: bold;
     padding: 8px 6px;
+    display: block;
 }
 .list div.product{
 	width: 192px;
