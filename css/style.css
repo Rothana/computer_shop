@@ -72,6 +72,9 @@ ul.newsticker {
 
 #brand {
   width: 100%;
+  box-sizing: border-box;
+  padding: 0 28px;
+  width: 100%;
 }
 #mcts1 {
   width: 780px !important;
@@ -496,3 +499,10 @@ ul.newsticker {
 	font-size: 15px;
 	margin-bottom: 5px;
 }
+
+
+
+.slick-slide .image{padding:10px;}
+/*.slick-slide img{border:5px solid #FFF;display:block;width:100%;}*/
+.slick-slide img.slick-loading{border:0 }
+.slick-slider{margin:30px auto 50px;}

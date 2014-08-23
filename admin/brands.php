@@ -49,7 +49,7 @@ function onDelete(){
         </tr>
 
         <tr>
-          <td>Logo ( height: 80px)</td>
+          <td>Logo ( 210px x 80px)</td>
           <td>&nbsp;</td>
           <td><input type='file' name='img' /></td>
         </tr>
@@ -98,7 +98,7 @@ function onDelete(){
               <td><input type="text" name="order" id='order' class="medium" value="<?php echo $row['br_order']; ?>" /></td>
             </tr>
            <tr>
-              <td>Logo</td>
+              <td>Logo (210px x 80px)</td>
               <td>&nbsp;</td>
               <td><input type='file' name='img' /></td>
             </tr>

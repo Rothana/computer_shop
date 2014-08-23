@@ -19,23 +19,24 @@ require_once('lib/class.file.php'); $obj_file = new File();
 <script src="<?php echo $obj_post->site_path();?>js/jquery.smooth-scroll.min.js"></script>
 <script src="<?php echo $obj_post->site_path();?>js/lightbox.js"></script> 
 
+<link rel="stylesheet" type="text/css" href="<?php echo $obj_post->site_path(); ?>slick/slick.css">
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="<?php echo $obj_post->site_path(); ?>css/main.css">
 <link rel="stylesheet" type="text/css" href="<?php echo $obj_post->site_path(); ?>css/style.css">
+
 <!--Menu JQuery-->
 <link href="<?php echo $obj_post->site_path(); ?>css/dcaccordion.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
 <script type='text/javascript' src='<?php echo $obj_post->site_path(); ?>js/jquery.cookie.js'></script>
 <script type='text/javascript' src='<?php echo $obj_post->site_path(); ?>js/jquery.hoverIntent.minified.js'></script>
 <script type='text/javascript' src='<?php echo $obj_post->site_path(); ?>js/jquery.dcjqaccordion.2.7.min.js'></script>
 <script type='text/javascript' src='<?php echo $obj_post->site_path(); ?>js/jquery.li-scroller.1.0.js'></script>
-<script type='text/javascript' src='<?php echo $obj_post->site_path(); ?>thumbsilder/thumbnail-slider.js'></script>
 <link href="<?php echo $obj_post->site_path(); ?>css/skins/blue.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo $obj_post->site_path(); ?>css/skins/graphite.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo $obj_post->site_path(); ?>css/skins/grey.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo $obj_post->site_path(); ?>css/li-scroller.css" rel="stylesheet" type="text/css" />
-<link href="<?php echo $obj_post->site_path(); ?>thumbsilder/generic.css" rel="stylesheet" type="text/css" />
-<link href="<?php echo $obj_post->site_path(); ?>thumbsilder/slider.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
 $(document).ready(function($){
@@ -66,7 +67,7 @@ $(document).ready(function($){
 <link rel="stylesheet" href="<?php echo $obj_post->site_path();?>themes/nivo-slider.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo $obj_post->site_path();?>themes/style.css" type="text/css" media="screen" />
 
-<script src="<?php echo $obj_post->site_path();?>js/jquery-1.6.1.min.js"></script>
+
 
 <title>
 	ITOne Computer
@@ -236,5 +237,21 @@ $(document).ready(function($){
 			<?php $obj_adv->display("outer_right"); ?>
 		</div>
 	</div>
+
+
+<script src="<?php echo $obj_post->site_path();?>slick/slick.js"></script> 
+<script type="text/javascript">
+
+$(document).ready(function($){
+
+	$('.autoplay').slick({
+	  slidesToShow: 4,
+	  slidesToScroll: 1,
+	  autoplay: true,
+	  autoplaySpeed: 2000
+	});
+
+});
+</script>
 </body>
 </html>

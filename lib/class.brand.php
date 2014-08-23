@@ -110,9 +110,9 @@ class Brand
 		$obj_post = new Post();
 		
 		$pr = "<div id='brand'>";
-		$pr .= "<div id='mcts1'>";
+		$pr .= "<div class='autoplay'>";
 		while($row = @mysql_fetch_array($rs)):
-			$pr .= "<img src='".$obj_post->site_path()."media/brands/".$row["br_logo"]."' />";
+			$pr .= "<div><img src='".$obj_post->site_path()."media/brands/".$row["br_logo"]."' /></div>";
 		endwhile;
 		$pr .="</div>";
 		$pr .="</div>";
